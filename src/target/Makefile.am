@@ -132,10 +132,12 @@ NDS32_SRC = \
 INTEL_IA32_SRC = \
 	quark_x10xx.c \
 	quark_d20xx.c \
+	quark_se.c \
 	lakemont.c \
 	x86_32_common.c
 
 ARC32_SRC = \
+	arc.c \
 	arc32.c \
 	arc_dbg.c \
 	arc_jtag.c \

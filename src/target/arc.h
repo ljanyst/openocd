@@ -34,26 +34,16 @@
 #include "target_type.h"
 
 #include "arc32.h"
-#include "arc_core.h"
 #include "arc_dbg.h"
 #include "arc_jtag.h"
 #include "arc_mem.h"
 #include "arc_mntr.h"
 #include "arc_ocd.h"
 #include "arc_regs.h"
-#include "arc_trgt.h"
 
 #if defined _WIN32 || defined __CYGWIN__
 #include <windows.h>
 #define sleep(x) Sleep(x)
 #endif
-
-#define ARC_COMMON_MAGIC 0x1A471AC5  /* just a unique number */
-
-struct arc_common {
-	int common_magic;
-	bool is_4wire;
-	struct arc32_common arc32;
-};
 
 #endif /* ARC_H */

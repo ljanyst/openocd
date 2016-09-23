@@ -99,6 +99,7 @@ extern struct target_type testee_target;
 extern struct target_type avr32_ap7k_target;
 extern struct target_type arc600_target;
 extern struct target_type arc700_target;
+extern struct target_type arc32_target;
 extern struct target_type arcv2_target;
 extern struct target_type hla_target;
 extern struct target_type nds32_v2_target;
@@ -107,6 +108,7 @@ extern struct target_type nds32_v3m_target;
 extern struct target_type or1k_target;
 extern struct target_type quark_x10xx_target;
 extern struct target_type quark_d20xx_target;
+extern struct target_type quark_se_target;
 
 static struct target_type *target_types[] = {
 	&arm7tdmi_target,
@@ -133,6 +135,7 @@ static struct target_type *target_types[] = {
 	&avr32_ap7k_target,
 	&arc600_target,
 	&arc700_target,
+  &arc32_target,
 	&arcv2_target,
 	&hla_target,
 	&nds32_v2_target,
@@ -141,6 +144,7 @@ static struct target_type *target_types[] = {
 	&or1k_target,
 	&quark_x10xx_target,
 	&quark_d20xx_target,
+  &quark_se_target,
 	NULL,
 };
 

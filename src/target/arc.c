@@ -65,7 +65,7 @@ int quark_se_arc_assert_reset(struct target *target)
 		}
 	}
 	/* restore memory and delete breakpoints */
-	arc_dbg_reset_breakpoints_watchpoints(target);
+	arc_dbg_reset_actionpoints(target);
 	/* do generic arc reset */
 	return arc_ocd_assert_reset(target);
 }
@@ -77,7 +77,7 @@ struct target_type arc32_target = {
 
 	.arch_state = arc32_arch_state,
 
-	.target_request_data = arc_trgt_request_data,
+	.target_request_data = NULL,
 
 	.halt = arc_dbg_halt,
 	.resume = arc_dbg_resume,
@@ -86,7 +86,7 @@ struct target_type arc32_target = {
 	.assert_reset = quark_se_arc_assert_reset,
 	.deassert_reset = arc_ocd_deassert_reset,
 
-	.soft_reset_halt = arc_core_soft_reset_halt,
+	.soft_reset_halt = NULL,
 
 	.get_gdb_reg_list = arc_regs_get_gdb_reg_list,
 
