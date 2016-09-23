@@ -833,6 +833,12 @@ static int dpm_watchpoint_setup(struct arm_dpm *dpm, unsigned index_t,
 		return ERROR_TARGET_RESOURCE_NOT_AVAILABLE;
 	}
 
+  /* IO watchpoints are only supported on Intel Architecture (x86) */
+  if (wp->rw == WPT_IO) {
+    LOG_ERROR("IO watchpoints are not supported");
+    return ERROR_TARGET_RESOURCE_NOT_AVAILABLE;
+  }
+
 	retval = dpm_bpwp_setup(dpm, &dwp->bpwp, wp->address, wp->length);
 	if (retval != ERROR_OK)
 		return retval;
@@ -848,6 +854,9 @@ static int dpm_watchpoint_setup(struct arm_dpm *dpm, unsigned index_t,
 		case WPT_ACCESS:
 			control |= 3 << 3;
 			break;
+    case WPT_IO:
+      /* not supported, error checking was done above */
+      break;
 	}
 	dwp->bpwp.control = control;
 
