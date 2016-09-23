@@ -9,7 +9,7 @@
 @paragraphindent 0
 @c %**end of header
 
-@include version.texi
+@c @include version.texi
 
 @copying
 
@@ -1300,8 +1300,58 @@ You should find the following directories under
 them as-is where you can; or as models for new files.
 @itemize @bullet
 @item @file{interface} ...
-These are for debug adapters. Files that specify configuration to use
-specific JTAG, SWD and other adapters go here.
+These are for debug adapters.
+Files that configure JTAG adapters go here.
+@example
+$ ls interface -R
+interface/:
+altera-usb-blaster.cfg    hilscher_nxhx50_re.cfg     openocd-usb-hs.cfg
+arm-jtag-ew.cfg           hitex_str9-comstick.cfg    openrd.cfg
+at91rm9200.cfg            icebear.cfg                osbdm.cfg
+axm0432.cfg               jlink.cfg                  parport.cfg
+busblaster.cfg            jtagkey2.cfg               parport_dlc5.cfg
+buspirate.cfg             jtagkey2p.cfg              redbee-econotag.cfg
+calao-usb-a9260-c01.cfg   jtagkey.cfg                redbee-usb.cfg
+calao-usb-a9260-c02.cfg   jtagkey-tiny.cfg           rlink.cfg
+calao-usb-a9260.cfg       jtag-lock-pick_tiny_2.cfg  sheevaplug.cfg
+chameleon.cfg             kt-link.cfg                signalyzer.cfg
+cortino.cfg               lisa-l.cfg                 signalyzer-h2.cfg
+digilent-hs1.cfg          luminary.cfg               signalyzer-h4.cfg
+dlp-usb1232h.cfg          luminary-icdi.cfg          signalyzer-lite.cfg
+dummy.cfg                 luminary-lm3s811.cfg       stlink-v1.cfg
+estick.cfg                minimodule.cfg             stlink-v2.cfg
+flashlink.cfg             neodb.cfg                  stm32-stick.cfg
+flossjtag.cfg             ngxtech.cfg                sysfsgpio-raspberrypi.cfg
+flossjtag-noeeprom.cfg    olimex-arm-usb-ocd.cfg     ti-icdi.cfg
+flyswatter2.cfg           olimex-arm-usb-ocd-h.cfg   turtelizer2.cfg
+flyswatter.cfg            olimex-arm-usb-tiny-h.cfg  ulink.cfg
+ftdi                      olimex-jtag-tiny.cfg       usb-jtag.cfg
+hilscher_nxhx10_etm.cfg   oocdlink.cfg               usbprog.cfg
+hilscher_nxhx500_etm.cfg  opendous.cfg               vpaclink.cfg
+hilscher_nxhx500_re.cfg   opendous_ftdi.cfg          vsllink.cfg
+hilscher_nxhx50_etm.cfg   openocd-usb.cfg            xds100v2.cfg
+
+interface/ftdi:
+axm0432.cfg               hitex_lpc1768stick.cfg     olimex-arm-usb-tiny-h.cfg
+calao-usb-a9260-c01.cfg   hitex_str9-comstick.cfg    olimex-jtag-tiny.cfg
+calao-usb-a9260-c02.cfg   icebear.cfg                oocdlink.cfg
+cortino.cfg               jtagkey2.cfg               opendous_ftdi.cfg
+digilent-hs1.cfg          jtagkey2p.cfg              openocd-usb.cfg
+digilent-hs2.cfg          jtagkey.cfg                openocd-usb-hs.cfg
+dlp-usb1232h.cfg          jtag-lock-pick_tiny_2.cfg  openrd.cfg
+dp_busblaster.cfg         kt-link.cfg                redbee-econotag.cfg
+flossjtag.cfg             lisa-l.cfg                 redbee-usb.cfg
+flossjtag-noeeprom.cfg    luminary.cfg               sheevaplug.cfg
+flyswatter2.cfg           luminary-icdi.cfg          signalyzer.cfg
+flyswatter.cfg            luminary-lm3s811.cfg       signalyzer-lite.cfg
+gw16042.cfg               m53evk.cfg                 stm32-stick.cfg
+hilscher_nxhx10_etm.cfg   minimodule.cfg             tumpa.cfg
+hilscher_nxhx500_etm.cfg  neodb.cfg                  turtelizer2-revB.cfg
+hilscher_nxhx500_re.cfg   ngxtech.cfg                turtelizer2-revC.cfg
+hilscher_nxhx50_etm.cfg   olimex-arm-usb-ocd.cfg     vpaclink.cfg
+hilscher_nxhx50_re.cfg    olimex-arm-usb-ocd-h.cfg   xds100v2.cfg
+$
+@end example
 @item @file{board} ...
 Think Circuit Board, PWA, PCB, they go by many names. Board files
 contain initialization items that are specific to a board.
@@ -1314,6 +1364,105 @@ of external flash and what address it uses. Any initialization
 sequence to enable that external flash or SDRAM should be found in the
 board file. Boards may also contain multiple targets: two CPUs; or
 a CPU and an FPGA.
+@example
+$ ls board
+actux3.cfg                        mbed-lpc11u24.cfg
+altera_sockit.cfg                 mbed-lpc1768.cfg
+am3517evm.cfg                     mcb1700.cfg
+arm_evaluator7t.cfg               microchip_explorer16.cfg
+asus-rt-n16.cfg                   mini2440.cfg
+asus-rt-n66u.cfg                  mini6410.cfg
+at91cap7a-stk-sdram.cfg           nds32_xc5.cfg
+at91eb40a.cfg                     netgear-dg834v3.cfg
+at91rm9200-dk.cfg                 nordic_nrf51822_mkit.cfg
+at91rm9200-ek.cfg                 olimex_LPC2378STK.cfg
+at91sam9261-ek.cfg                olimex_lpc_h2148.cfg
+at91sam9263-ek.cfg                olimex_sam7_ex256.cfg
+at91sam9g20-ek.cfg                olimex_sam9_l9260.cfg
+atmel_at91sam7s-ek.cfg            olimex_stm32_h103.cfg
+atmel_at91sam9260-ek.cfg          olimex_stm32_h107.cfg
+atmel_at91sam9rl-ek.cfg           olimex_stm32_p107.cfg
+atmel_sam3n_ek.cfg                omap2420_h4.cfg
+atmel_sam3s_ek.cfg                open-bldc.cfg
+atmel_sam3u_ek.cfg                openrd.cfg
+atmel_sam3x_ek.cfg                or1k_generic.cfg
+atmel_sam4e_ek.cfg                osk5912.cfg
+atmel_sam4l8_xplained_pro.cfg     phone_se_j100i.cfg
+atmel_sam4s_ek.cfg                phytec_lpc3250.cfg
+atmel_sam4s_xplained_pro.cfg      pic-p32mx.cfg
+atmel_samd20_xplained_pro.cfg     propox_mmnet1001.cfg
+atmel_samd21_xplained_pro.cfg     pxa255_sst.cfg
+atmel_samg53_xplained_pro.cfg     quark_x10xx_board.cfg
+atmel_samr21_xplained_pro.cfg     redbee.cfg
+balloon3-cpu.cfg                  rsc-w910.cfg
+bcm28155_ap.cfg                   sheevaplug.cfg
+bt-homehubv1.cfg                  smdk6410.cfg
+colibri.cfg                       snps_axs101.cfg
+crossbow_tech_imote2.cfg          snps_axs102.cfg
+csb337.cfg                        snps_axs103_hs36.cfg
+csb732.cfg                        snps_axs103_hs38.cfg
+da850evm.cfg                      snps_em_sk.cfg
+digi_connectcore_wi-9c.cfg        snps_em_sk_v1.cfg
+digilent_zedboard.cfg             spear300evb.cfg
+diolan_lpc4350-db1.cfg            spear300evb_mod.cfg
+dm355evm.cfg                      spear310evb20.cfg
+dm365evm.cfg                      spear310evb20_mod.cfg
+dm6446evm.cfg                     spear320cpu.cfg
+dp_busblaster_v3.cfg              spear320cpu_mod.cfg
+efikamx.cfg                       steval_pcc010.cfg
+eir.cfg                           stm320518_eval.cfg
+ek-lm3s1968.cfg                   stm320518_eval_stlink.cfg
+ek-lm3s3748.cfg                   stm32100b_eval.cfg
+ek-lm3s6965.cfg                   stm3210b_eval.cfg
+ek-lm3s811.cfg                    stm3210c_eval.cfg
+ek-lm3s811-revb.cfg               stm3210e_eval.cfg
+ek-lm3s8962.cfg                   stm3220g_eval.cfg
+ek-lm3s9b9x.cfg                   stm3220g_eval_stlink.cfg
+ek-lm3s9d92.cfg                   stm3241g_eval.cfg
+ek-lm4f120xl.cfg                  stm3241g_eval_stlink.cfg
+ek-lm4f232.cfg                    stm32429i_eval.cfg
+ek-tm4c123gxl.cfg                 stm32429i_eval_stlink.cfg
+ek-tm4c1294xl.cfg                 stm32439i_eval.cfg
+embedded-artists_lpc2478-32.cfg   stm32439i_eval_stlink.cfg
+ethernut3.cfg                     stm32f0discovery.cfg
+frdm-kl25z.cfg                    stm32f3discovery.cfg
+frdm-kl46z.cfg                    stm32f429discovery.cfg
+glyn_tonga2.cfg                   stm32f4discovery.cfg
+gumstix-aerocore.cfg              stm32l0discovery.cfg
+hammer.cfg                        stm32ldiscovery.cfg
+hilscher_nxdb500sys.cfg           stm32vldiscovery.cfg
+hilscher_nxeb500hmi.cfg           st_nucleo_f030r8.cfg
+hilscher_nxhx10.cfg               st_nucleo_f103rb.cfg
+hilscher_nxhx500.cfg              st_nucleo_f334r8.cfg
+hilscher_nxhx50.cfg               st_nucleo_f401re.cfg
+hilscher_nxsb100.cfg              st_nucleo_f411re.cfg
+hitex_lpc1768stick.cfg            str910-eval.cfg
+hitex_lpc2929.cfg                 telo.cfg
+hitex_stm32-performancestick.cfg  ti_am335xevm.cfg
+hitex_str9-comstick.cfg           ti_am43xx_evm.cfg
+iar_lpc1768.cfg                   ti_beagleboard.cfg
+iar_str912_sk.cfg                 ti_beagleboard_xm.cfg
+icnova_imx53_sodimm.cfg           ti_beaglebone.cfg
+icnova_sam9g45_sodimm.cfg         ti_blaze.cfg
+imx27ads.cfg                      ti_pandaboard.cfg
+imx27lnst.cfg                     ti_pandaboard_es.cfg
+imx28evk.cfg                      ti_tmdx570ls31usb.cfg
+imx31pdk.cfg                      topas910.cfg
+imx35pdk.cfg                      topasa900.cfg
+imx53loco.cfg                     twr-k60f120m.cfg
+imx53-m53evk.cfg                  twr-k60n512.cfg
+keil_mcb1700.cfg                  tx25_stk5.cfg
+keil_mcb2140.cfg                  tx27_stk5.cfg
+kwikstik.cfg                      unknown_at91sam9260.cfg
+linksys_nslu2.cfg                 uptech_2410.cfg
+linksys-wrt54gl.cfg               verdex.cfg
+lisa-l.cfg                        voipac.cfg
+logicpd_imx27.cfg                 voltcraft_dso-3062c.cfg
+lpc1850_spifi_generic.cfg         x300t.cfg
+lpc4350_spifi_generic.cfg         zy1000.cfg
+lubbock.cfg
+$
+@end example
 @item @file{target} ...
 Think chip. The ``target'' directory represents the JTAG TAPs
 on a chip
@@ -1321,6 +1470,99 @@ which OpenOCD should control, not a board. Two common types of targets
 are ARM chips and FPGA or CPLD chips.
 When a chip has multiple TAPs (maybe it has both ARM and DSP cores),
 the target config file defines all of them.
+@example
+$ ls target
+1986BE1T.cfg                       ks869x.cfg
+aduc702x.cfg                       lpc11xx.cfg
+altera_fpgasoc.cfg                 lpc12xx.cfg
+am335x.cfg                         lpc13xx.cfg
+am437x.cfg                         lpc17xx.cfg
+amdm37x.cfg                        lpc1850.cfg
+ar71xx.cfg                         lpc1xxx.cfg
+armada370.cfg                      lpc2103.cfg
+at32ap7000.cfg                     lpc2124.cfg
+at91r40008.cfg                     lpc2129.cfg
+at91rm9200.cfg                     lpc2148.cfg
+at91sam3ax_4x.cfg                  lpc2294.cfg
+at91sam3ax_8x.cfg                  lpc2378.cfg
+at91sam3ax_xx.cfg                  lpc2460.cfg
+at91sam3nXX.cfg                    lpc2478.cfg
+at91sam3sXX.cfg                    lpc2900.cfg
+at91sam3u1c.cfg                    lpc2xxx.cfg
+at91sam3u1e.cfg                    lpc3131.cfg
+at91sam3u2c.cfg                    lpc3250.cfg
+at91sam3u2e.cfg                    lpc4350.cfg
+at91sam3u4c.cfg                    mc13224v.cfg
+at91sam3u4e.cfg                    mdr32f9q2i.cfg
+at91sam3uxx.cfg                    nds32v2.cfg
+at91sam3XXX.cfg                    nds32v3.cfg
+at91sam4lXX.cfg                    nds32v3m.cfg
+at91sam4sd32x.cfg                  nrf51.cfg
+at91sam4sXX.cfg                    nrf51_stlink.tcl
+at91sam4XXX.cfg                    nuc910.cfg
+at91sam7se512.cfg                  omap2420.cfg
+at91sam7sx.cfg                     omap3530.cfg
+at91sam7x256.cfg                   omap4430.cfg
+at91sam7x512.cfg                   omap4460.cfg
+at91sam9260.cfg                    omap5912.cfg
+at91sam9260_ext_RAM_ext_flash.cfg  omapl138.cfg
+at91sam9261.cfg                    or1k.cfg
+at91sam9263.cfg                    pic32mx.cfg
+at91sam9.cfg                       pxa255.cfg
+at91sam9g10.cfg                    pxa270.cfg
+at91sam9g20.cfg                    pxa3xx.cfg
+at91sam9g45.cfg                    quark_x10xx.cfg
+at91sam9rl.cfg                     readme.txt
+at91samdXX.cfg                     samsung_s3c2410.cfg
+at91samg5x.cfg                     samsung_s3c2440.cfg
+atmega128.cfg                      samsung_s3c2450.cfg
+avr32.cfg                          samsung_s3c4510.cfg
+bcm281xx.cfg                       samsung_s3c6410.cfg
+bcm4706.cfg                        sharp_lh79532.cfg
+bcm4718.cfg                        smp8634.cfg
+bcm47xx.cfg                        snps_axc001.cfg
+bcm5352e.cfg                       snps_axc002.cfg
+bcm6348.cfg                        snps_axc003_hs36.cfg
+c100.cfg                           snps_axc003_hs38.cfg
+c100config.tcl                     snps_em_sk_fpga.cfg
+c100helper.tcl                     spear3xx.cfg
+c100regs.tcl                       stellaris.cfg
+cs351x.cfg                         stellaris_icdi.cfg
+davinci.cfg                        stm32f0x.cfg
+dragonite.cfg                      stm32f0x_stlink.cfg
+dsp56321.cfg                       stm32f1x.cfg
+dsp568013.cfg                      stm32f1x_stlink.cfg
+dsp568037.cfg                      stm32f2x.cfg
+efm32.cfg                          stm32f2x_stlink.cfg
+efm32_stlink.cfg                   stm32f3x.cfg
+epc9301.cfg                        stm32f3x_stlink.cfg
+faux.cfg                           stm32f4x.cfg
+feroceon.cfg                       stm32f4x_stlink.cfg
+fm3.cfg                            stm32l.cfg
+gp326xxxa.cfg                      stm32lx_dual_bank.cfg
+hilscher_netx10.cfg                stm32lx_stlink.cfg
+hilscher_netx500.cfg               stm32_stlink.cfg
+hilscher_netx50.cfg                stm32w108_stlink.cfg
+icepick.cfg                        stm32w108xx.cfg
+imx21.cfg                          stm32xl.cfg
+imx25.cfg                          str710.cfg
+imx27.cfg                          str730.cfg
+imx28.cfg                          str750.cfg
+imx31.cfg                          str912.cfg
+imx35.cfg                          swj-dp.tcl
+imx51.cfg                          test_reset_syntax_error.cfg
+imx53.cfg                          test_syntax_error.cfg
+imx6.cfg                           ti-ar7.cfg
+imx.cfg                            ti_calypso.cfg
+is5114.cfg                         ti_dm355.cfg
+ixp42x.cfg                         ti_dm365.cfg
+k1879h61ya.cfg                     ti_dm6446.cfg
+k40.cfg                            ti_tms570.cfg
+k60.cfg                            tmpa900.cfg
+kl25.cfg                           tmpa910.cfg
+kl25z_hla.cfg                      u8500.cfg
+kl46.cfg                           zynq_7000.cfg
+@end example
 @item @emph{more} ... browse for other library files which may be useful.
 For example, there are various generic and CPU-specific utilities.
 @end itemize
@@ -4044,6 +4286,9 @@ Lists all supported target types.
 At this writing, the supported CPU types are:
 
 @itemize @bullet
+@item @code{arc600} -- Synopsys DesignWare ARC 600 processors
+@item @code{arc700} -- Synopsys DesignWare ARC 700 processors
+@item @code{arcv2} -- Synopsys DesignWare ARC EM and ARC HS processors
 @item @code{arm11} -- this is a generation of ARMv6 cores
 @item @code{arm720t} -- this is an ARMv4 core with an MMU
 @item @code{arm7tdmi} -- this is an ARMv4 core
@@ -7146,6 +7391,242 @@ Most CPUs have specialized JTAG operations to support debugging.
 OpenOCD packages most such operations in its standard command framework.
 Some of those operations don't fit well in that framework, so they are
 exposed here as architecture or implementation (core) specific commands.
+
+
+@section ARC Architecture
+@cindex ARC
+
+Synopsys DesignWare ARC Processors are a family of 32-bit CPUs that SoC
+designers can optimize for a wide range of uses, from deeply embedded to
+high-performance host applications in a variety of market segments. See more
+at: http://www.synopsys.com/IP/ProcessorIP/ARCProcessors/Pages/default.aspx.
+OpenOCD supports all of the current ARC processors: ARC HS, ARC EM, ARC 700 and
+ARC 600. There is a set ARC-specific OpenOCD commands that allow low-level
+access to the core and provide necessary support for ARC extensibility and
+configurability capabilities. ARC processors has much more configuration
+capabilities than most of the other processors and in addition there is an
+extension interface that allows SoC designers to add custom registers and
+instructions. For the OpenOCD that mostly means that set of core and AUX
+registers in target will vary and is not fixed for a particular processor
+model. To enable extensibility several TCL commands are provided that allow to
+describe those optional registers in OpenOCD configuration files. Moreover
+those commands allow for a dynamic target features discovery.
+
+@subsection Configuring ARC targets
+
+Due to configurable and extensible nature of ARC processors it is required to
+do several additional configuration steps, which are not usually required for
+other architectures.
+
+@enumerate
+
+@item @emph{Source CPU configuration file for the processor that is used in the
+target.} If target has multiple different ARC processors, then all of the
+respective configuration files should be sourced. Valid configuration files for
+ARC processors:
+
+@itemize
+
+@item @code{cpu/arc/hs.tcl} - file for ARC HS processors.
+
+@item @code{cpu/arc/em.tcl} - file for ARC EM processors.
+
+@item @code{cpu/arc/arcompact.tcl} - file for ARC 600 and ARC 700 processors.
+
+@end itemize
+
+@item @emph{Run processor specific register initialization function.} Available
+functions are:
+
+@itemize
+
+@item @code{arc_hs_init_regs} - for ARC HS processors.
+
+@item @code{arc_em_init_regs} - for ARC EM processors.
+
+@item @code{arc_arcompact_init_regs} - for ARC 600 and ARC 700 processors.
+
+@end itemize
+
+@item @emph{Configure reset-assert event handler if target doesn't support SRST
+signal.} Procedure @command{arc_common_reset} is a basic reset handler that
+resets @var{LP_START}, @var{LP_END}, @var{LP_COUNT} registers, disables
+interrupts and resets @var{PC} register to a value specified in the @var{RESET}
+exception handler. To use this function as a handler:
+@verbatim
+$_TARGETNAME configure -event reset-assert "arc_common_reset $_TARGETNAME"
+@end verbatim
+
+Specifying @var{$_TARGETNAME} as an argument is required for multi-core
+targets, where event handler should be executed for each processor - OpenOCD
+doesn't change current target when executing event, therefore that has to be
+done by the event handler itself, subsequently event handler should be aware of
+for which processor it is running.
+
+@item @emph{To add extension registers to default register set define two
+custom functions.} One is analogue to @command{arc_[hs|em|arcompcat]_init_regs}
+and should define set of possible registers and it should call appropriate
+processor-specific function to define ARC non-extension registers,
+@command{arc_em_init_regs} for EM and so on. Another is like
+@command{arc_[hs|em|arcompact]_examinte_target} and should examine target and
+decide which registers really exist in target processor, it also should call
+generic examine function, @command{arc_em_examine_target} for EM  and so on.
+This function should be assigned as a handler of @var{examin-end} event of
+processor.
+
+@end enumerate
+
+Refer to existing Synopsys target configuration files for examples.
+
+@subsection General ARC commands
+
+@deffn {Config Command} {arc add-reg} configparams
+
+Add a new register to processor target. By default newly created register is
+marked as not existing. @var{configparams} must have following required
+arguments:
+
+@itemize @bullet
+
+@item @code{-name} name
+@*Name of a register.
+
+@item @code{-num} number
+@*Architectural register number: core register number or AUX register number.
+
+@item @code{-feature} XML_feature
+@*Name of GDB XML target description feature.
+
+@end itemize
+
+@var{configparams} may have following optional arguments:
+
+@itemize @bullet
+
+@item @code{-gdbnum} number
+@*GDB register number. It is recommended to not assign GDB register number
+manually, because there would be a risk that two register will have same
+number. When register GDB number is not set with this option, then register
+will get a previous register number + 1. This option is required only for those
+registers that must be at particular address expected by GDB.
+
+@item @code{-core}
+@*This option specifies that register is a core registers. If not - this is an
+AUX register. AUX registers and core registers reside in different address
+spaces.
+
+@item @code{-bcr}
+@*This options specifies that register is a BCR register. BCR means Build
+Configuration Registers - this is a special type of AUX registers that are read
+only and non-volatile, that is - they never change their value. Therefore OpenOCD
+never invalidates values of those registers in internal caches. Because BCR is a
+type of AUX registers, this option cannot be used with @code{-core}.
+
+@item @code{-type} type_name
+@*Name of type of this register. This can be either one of the basic GDB types,
+or a custom types described with @command{arc add-reg-type-[flags|struct]}.
+
+@item @code{-g}
+@* If specified then this is a "general" register. General registers are always
+read by OpenOCD on context save (when core has just been halted) and is always
+transfered to GDB client in a response to g-packet. Contrary to this,
+non-general registers are read and sent to GDB client on-demand. In general it
+is not recommended to apply this option to custom registers.
+
+@end itemize
+
+@end deffn
+
+@deffn {Config Command} {arc add-reg-type-flags} -name name flags...
+Adds new register type of ``flags'' class. ``Flags'' types can contain only
+one-bit fields. Each flag definition looks like @code{-flag name bit-position}.
+@end deffn
+
+@deffn {Config Command} {arc add-reg-type-struct} -name name structs...
+Adds new register type of ``struct'' class. ``Struct'' types can contain either
+bit-fields or fields of other types, however at the moment only bit fields are
+supported. Structure bit field definition looks like @code{-bitfield name
+startbit endbit}.
+@end deffn
+
+@deffn {Command} {arc has-dcache} on|off
+If set to true, then OpenOCD will flush/invalidate data cache when doing memory
+operations. This is @var{on} by default, and can be disabled for targets that
+doen't have caches - it will slightly improve OpenOCD performance.
+@end deffn
+
+@deffn {Command} {arc num-actionpoints} [value]
+Gets or sets amount of actionpoints in the current ARC core.
+@end deffn
+
+@deffn {Command} {arc reg} name [value]
+Gets or sets value of register by name. This is similiar to generic @code{reg}
+command, but instead of printing register value it returns it. Unlike @code{arc
+jtag core-reg|aux-reg} commands, this command operates through register cache
+of OpenOCD.
+@end deffn
+
+@deffn {Command} {arc reg-field} reg-name field-name
+Returns value of bit-field in a register. Register must be have a ``struct''
+register type.
+@end deffn
+
+@deffn {Command} {arc set-reg-exists} reg-names...
+Specify that some register exists. Any amount of register names can be passed
+as an argument for a single command invocation.
+@end deffn
+
+@deffn {Command} {arc set-reg-feature} reg-name reg-feature
+Change GDB target description XML feature of specified register.
+@end deffn
+
+@subsection ARC JTAG commands
+
+@deffn {Command} {arc jtag always-check-status-rd} on|off
+If true we will check for JTAG status register and whether RD(ready) bit is set
+each time before doing any JTAG operations. By default that is off.
+@end deffn
+
+@deffn {Command} {arc jtag aux-reg} regnum [value]
+Provides low-level access to AUX register via its number. This commands access
+register in target directly via JTAG, bypassing any OpenOCD internal caches,
+therefore it is unsafe to use if that register can be operated by other means.
+If @code{value} is not specified, then register value will be returned,
+otherwise register will be set to this value. Note that unlike generic
+@command{reg} command this command doesn't print value of register directly but
+returns it, consequently its return value can be used on arithmetic operations,
+however if used standalone it will print register value in decimal, not hex
+format. To print register value in hex format use @command{format} command,
+like @code{format "%x" [arc jtag aux-reg 0xa]}.
+@end deffn
+
+@deffn {Command} {arc jtag check-status-fl} on|off
+If true we will check for JTAG status FL bit after all JTAG transaction. This
+is disabled by default because it is known to break JTAG module in the core.
+@end deffn
+
+@deffn {Command} {arc jtag core-reg} regnum [value]
+This command is similiar to @command{arc jtag aux-reg} but is for core
+registers.
+@end deffn
+
+@deffn {Command} {arc jtag wait-until-write-finished} on|off
+If true OpenOCD will poll JTAG STATUS register until 'ready' bit is set after
+doing memory and register writes. Without this check there is a chance that
+OpenOCD will 'reset' JTAG transaction command before it is finished and that in
+some situations might completely hang the core. That is known to happen, for
+example, in some occasions when D$ is flushed, hence it is essential to wait
+until cache is flushed and only then finish a transaction. On the other hand it
+has been found that this polling triggers a bug in ARC EM JTAG unit: while
+write to memory or to register, read of the status will cause a second write to
+be done to the next register or memory word. This, happens with EM Starter Kit,
+ARCompact cores in AXS101, ARC HS cores in AXS103, but doesn't happen with EM6
+in AXS101 or with HS in AXS102. Default is 'off'. Switching this on might
+degrade performance of debugging, and as mentioned can cause errors in some ARC
+cores. On the other hand, in theory switch this option on is the "right way" of
+doing JTAG communication.
+@end deffn
+
 
 @anchor{armhardwaretracing}
 @section ARM Hardware Tracing
